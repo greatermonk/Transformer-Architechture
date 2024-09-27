@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wine Reviews Transformer Model</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-left: 5px solid #ccc;
+            overflow-x: auto;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 5px;
+        }
+        a {
+            color: #1E90FF;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Wine Reviews Transformer Model</h1>
+
+<p>This project demonstrates the <strong>Transformer architecture</strong> with a specific focus on how the <strong>attention mechanism</strong> works in natural language processing (NLP). The dataset used consists of approximately <strong>129,971 wine reviews</strong>, capturing detailed descriptions of wines from various countries and regions around the world.</p>
+
+<h2>Table of Contents</h2>
+<ul>
+    <li><a href="#project-overview">Project Overview</a></li>
+    <li><a href="#attention-mechanism">Attention Mechanism</a></li>
+    <li><a href="#dataset">Dataset</a></li>
+    <li><a href="#model-architecture">Model Architecture</a></li>
+    <li><a href="#training">Training</a></li>
+    <li><a href="#requirements">Requirements</a></li>
+    <li><a href="#how-to-run">How to Run</a></li>
+    <li><a href="#results-and-insights">Results and Insights</a></li>
+    <li><a href="#license">License</a></li>
+</ul>
+
+<h2 id="project-overview">Project Overview</h2>
+<p>The primary goal of this project is to showcase the <strong>transformer architecture</strong>, widely known for its ability to handle sequence data through <strong>attention</strong> rather than recurrence. This project demonstrates how transformers can be applied to <strong>text generation</strong> and <strong>language modeling</strong> using a dataset of wine reviews.</p>
+
+<h2 id="attention-mechanism">Attention Mechanism</h2>
+<p>The <strong>attention mechanism</strong> is central to how the transformer processes data. This project aims to provide a visual and interactive demonstration of how attention works in predicting the next word in a sequence. Specifically, this model learns to predict the next word in a wine review, based on prior words in the sequence.</p>
+
+<p>The transformer model incorporates a <strong>causal attention mask</strong>, which ensures that the model can only attend to past or current tokens, making it ideal for autoregressive tasks like next-word prediction.</p>
+
+<h2 id="dataset">Dataset</h2>
+<p>The dataset contains <strong>129,971 wine reviews</strong>, including information on:</p>
+<ul>
+    <li>Country of origin</li>
+    <li>Province (region) of the wine</li>
+    <li>Wine variety (grape type)</li>
+    <li>The wine description</li>
+</ul>
+
+<h3>Example of a wine review:</h3>
+<pre><code>"wine review : France : Bordeaux : Merlot : This is a full-bodied wine with deep fruity flavors and a hint of oak."</code></pre>
+
+<h2 id="model-architecture">Model Architecture</h2>
+<p>The transformer architecture used in this project is composed of the following components:</p>
+<ul>
+    <li><strong>Token and Positional Embedding</strong>: Converts text into numerical vectors for input.</li>
+    <li><strong>Multi-Head Self-Attention</strong>: Enables the model to focus on different parts of the sequence simultaneously.</li>
+    <li><strong>Feed-Forward Networks</strong>: Applies transformations to the attention outputs.</li>
+    <li><strong>Causal Attention Mask</strong>: Ensures that the model only attends to earlier tokens in the sequence for autoregressive training.</li>
+</ul>
+
+<h3>Hyperparameters:</h3>
+<ul>
+    <li><strong>VOCAB_SIZE</strong>: 10,000 (limits the vocabulary to the most frequent words)</li>
+    <li><strong>MAX_LEN</strong>: 80 (maximum length of input sequences)</li>
+    <li><strong>EMBEDDING_DIM</strong>: 256 (size of word embeddings)</li>
+    <li><strong>K_DIM</strong>: 256 (dimension of key vectors in attention)</li>
+    <li><strong>N_HEADS</strong>: 2 (number of attention heads)</li>
+    <li><strong>FF_DIM</strong>: 256 (dimension of feed-forward layers)</li>
+    <li><strong>BATCH_SIZE</strong>: 64</li>
+    <li><strong>EPOCHS</strong>: 15</li>
+</ul>
+
+<h2 id="training">Training</h2>
+<p>The training process involves tokenizing each wine review and creating a shifted version of the sequence for next-word prediction. The transformer model is trained to predict the next token based on prior tokens in the review.</p>
+
+<h3>Training Process:</h3>
+<ol>
+    <li><strong>Text Vectorization</strong>: Tokenizes the wine reviews into sequences of integers.</li>
+    <li><strong>Causal Masking</strong>: Ensures that the model only attends to previous tokens.</li>
+    <li><strong>Training</strong>: The model is trained on the tokenized sequences, optimizing for the next word prediction.</li>
+</ol>
+
+<h2 id="requirements">Requirements</h2>
+<p>To run the project, you’ll need the following dependencies:</p>
+<ul>
+    <li>Python 3.8+</li>
+    <li>TensorFlow 2.17+</li>
+    <li>NumPy</li>
+    <li>Matplotlib</li>
+</ul>
+
+<pre><code>pip install -r requirements.txt</code></pre>
+
+<h2 id="how-to-run">How to Run</h2>
+<ol>
+    <li>Clone the repository:
+        <pre><code>git clone https://github.com/yourusername/wine-reviews-transformer.git
+cd wine-reviews-transformer</code></pre>
+    </li>
+    <li>Install dependencies:
+        <pre><code>pip install -r requirements.txt</code></pre>
+    </li>
+    <li>Train the model:
+        <pre><code>python train.py</code></pre>
+    </li>
+    <li>Visualize the attention mechanism after training.</li>
+</ol>
+
+<h2 id="results-and-insights">Results and Insights</h2>
+<p>This project demonstrates how transformers can be used for <strong>sequence modeling</strong> and <strong>next-word prediction</strong> in the context of natural language. The attention mechanism allows the model to focus on key parts of a wine review when predicting the next word, offering insights into how transformers handle text generation tasks.</p>
+
+<h3>Example Output:</h3>
+<pre><code>Input: "wine review : France : Bordeaux : Merlot :"
+Predicted next word: "rich"</code></pre>
+
+<h2 id="license">License</h2>
+<p>This project is licensed under the MIT License. See the <a href="LICENSE">LICENSE</a> file for more details.</p>
+
+</body>
+</html>
