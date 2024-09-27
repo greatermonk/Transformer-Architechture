@@ -43,29 +43,29 @@ Example of a wine review:
 
 The transformer architecture used in this project is composed of the following components:
 
-- Token and Positional Embedding: Converts text into numerical vectors for input.
-- Multi-Head Self-Attention: Enables the model to focus on different parts of the sequence simultaneously.
-- Feed-Forward Networks: Applies transformations to the attention outputs.
-- Causal Attention Mask: Ensures that the model only attends to earlier tokens in the sequence for autoregressive training.
+- **Token and Positional Embedding**: Converts text into numerical vectors for input.
+- **Multi-Head Self-Attention**: Enables the model to focus on different parts of the sequence simultaneously.
+- **TextGenerator**: Generates text according to the token with highest likelihood or attention.
+- **Causal Attention Mask**: Ensures that the model only attends to earlier tokens in the sequence for autoregressive training.
 
 ### Hyperparameters:
-- VOCAB_SIZE: 10,000 (limits the vocabulary to the most frequent words)
-- MAX_LEN: 80 (maximum length of input sequences)
-- EMBEDDING_DIM: 256 (size of word embeddings)
-- K_DIM: 256 (dimension of key vectors in attention)
-- N_HEADS: 2 (number of attention heads)
-- FF_DIM: 256 (dimension of feed-forward layers)
-- BATCH_SIZE: 64
-- EPOCHS: 15
+- **VOCAB_SIZE:** 10,000 (limits the vocabulary to the most frequent words)
+- **MAX_LEN:** 80 (maximum length of input sequences)
+- **EMBEDDING_DIM:** 256 (size of word embeddings)
+- **K_DIM:** 256 (dimension of key vectors in attention)
+- **N_HEADS:** 2 (number of attention heads)
+- **FF_DIM:** 256 (dimension of feed-forward layers)
+- **BATCH_SIZE:** 64
+- **EPOCHS:** 15
 
 ## Training
 
 The training process involves tokenizing each wine review and creating a shifted version of the sequence for next-word prediction. The transformer model is trained to predict the next token based on prior tokens in the review.
 
 ### Training Process:
-1. Text Vectorization: Tokenizes the wine reviews into sequences of integers.
-2. Causal Masking: Ensures that the model only attends to previous tokens.
-3. Training: The model is trained on the tokenized sequences, optimizing for the next word prediction.
+1. **Text Vectorization:** Tokenizes the wine reviews into sequences of integers.
+2. **Causal Masking:** Ensures that the model only attends to previous tokens.
+3. **Training:** The model is trained on the tokenized sequences, optimizing for the next word prediction.
 
 ## Requirements
 
