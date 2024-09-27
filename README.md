@@ -31,13 +31,28 @@ The dataset contains 129,971 wine reviews, including information on:
 - Province (region) of the wine
 - Wine variety (grape type)
 - The wine description
+- price
+- designation
+
+**Dataset download link:**
+```
+https://www.kaggle.com/datasets/zynicide/wine-reviews?select=winemag-data-130k-v2.json
+```
+
+**Download dataset using kaggle api:**
+```
+kaggle datasets download -d zynicide/wine-reviews
+```
+
 
 Each review is formatted into a structured sequence that is fed into the transformer for training.
 
 Example of a wine review:
-```
+
+``
 "wine review : France : Bordeaux : Merlot : This is a full-bodied wine with deep fruity flavors and a hint of oak."
-```
+``
+
 
 ## Model Architecture
 
@@ -69,10 +84,11 @@ The training process involves tokenizing each wine review and creating a shifted
 
 ## Requirements
 
-- Python 3.8+
+- Python 3.12+
 - TensorFlow 2.17+
 - NumPy
 - Matplotlib
+- keras
 
 You can install the required packages via:
 
